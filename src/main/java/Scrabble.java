@@ -19,19 +19,22 @@ public class Scrabble {
         this.word = word;
     }
 
-    public int calcScrabbleWord()
-    {
+    public int calcScrabbleWord() {
         word = word.toUpperCase();
         char letter;
         for (int i = 0; i < word.length(); i++) {
             letter = word.charAt(i);
+            if (word.chars().anyMatch(c -> !Character.isAlphabetic(c))) {
+                totalScore = totalScore + 0;
 
-            if ((letter =='A'|| letter =='E'|| (letter == 'I') || (letter == 'O') || (letter == 'U') || (letter == 'L') || (letter == 'N') || (letter == 'R') || (letter == 'S') || (letter == 'T'))) {
-                totalScore = totalScore +1;
             }
 
-            if (letter =='G' || letter =='D') {
-                totalScore = totalScore +2;
+            if ((letter == 'A' || letter == 'E' || (letter == 'I') || (letter == 'O') || (letter == 'U') || (letter == 'L') || (letter == 'N') || (letter == 'R') || (letter == 'S') || (letter == 'T'))) {
+                totalScore = totalScore + 1;
+            }
+
+            if (letter == 'G' || letter == 'D') {
+                totalScore = totalScore + 2;
             }
 
             if (letter == 'B' || letter == 'C' || letter == 'M' || letter == 'P') {
@@ -49,23 +52,21 @@ public class Scrabble {
             if (letter == 'Q' || letter == 'Z') {
                 totalScore += 10;
             }
-            if (word.chars().anyMatch(c -> !Character.isAlphabetic(c))) {
-                System.out.println("invalid entry try again");
-                break;
-            }
 
 
 
         }
 
-        return(totalScore);
+        return (totalScore);
 
     }
 
     public int getTotalScore() {
         return totalScore;
     }
-    public void printScore(){
+
+    public void printScore() {
+        word = word.toLowerCase();
         System.out.println("Your total score is " + word + ": " + totalScore);
     }
 }

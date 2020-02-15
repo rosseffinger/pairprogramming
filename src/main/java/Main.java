@@ -15,17 +15,16 @@ public class Main {
      */
 
 
-    //if empty or one letter words --> not valid message
+    //if empty or one letter words --> 0 points
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println("Please input a word for scrabble calculation");
         String userInput = input.nextLine();
         Scrabble newWord = new Scrabble(userInput);
-        newWord.calcScrabbleWord();
         userInput = userInput.toUpperCase();
-
-        newWord.getTotalScore();
+        newWord.calcScrabbleWord();
+        newWord.printScore();
 
     }
 }
